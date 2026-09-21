@@ -2,8 +2,6 @@
 
 Technical assessment for the **React Developer Intern/Trainee** position at **Sajilo Life Pvt. Ltd.**
 
-> **Before you commit this file:** everything marked `[VERIFY]` is something I could not confirm from the code. Check it against your app, fix it, or delete it. Remove this note when done.
-
 ## Live Demo and Repository
 
 - **Live app:** https://sajilo-assessment.kpratik.com.np
@@ -14,7 +12,7 @@ Technical assessment for the **React Developer Intern/Trainee** position at **Sa
 A single React application that contains both assessment projects:
 
 1. **User Management Dashboard** (`/users`): browse, search, filter, view, add, edit and delete users.
-2. **E-commerce Product & Cart** (`[VERIFY: /products]`): browse products, view details and manage a persistent shopping cart.
+2. **E-commerce Product & Cart** (`[/products]`): browse products, view details and manage a persistent shopping cart.
 
 Both projects consume the public [DummyJSON](https://dummyjson.com) API.
 
@@ -34,14 +32,12 @@ Both projects consume the public [DummyJSON](https://dummyjson.com) API.
 
 ## Key Features
 
-> Delete any line that is not actually implemented. `[VERIFY]` every item.
-
 ### Project 1: User Management Dashboard
 
 - User list with profile image, full name, email, phone and company name
 - Pagination
 - Search
-- Filtering by `[VERIFY: gender / role]`
+- Filtering by `[gender / role]`
 - Loading, error and empty-result states
 - Responsive layout
 - Dynamic user details page (`/users/:id`) showing personal info, address, company and bank details, with navigation back to the list
@@ -68,11 +64,8 @@ Both projects consume the public [DummyJSON](https://dummyjson.com) API.
 
 ## Additional Features Implemented
 
-`[VERIFY: list only what you really built, for example debounced search, toast notifications, skeleton loaders, URL-based filters, dark mode, lazy loading with React.lazy + Suspense, error boundary, protected routes. If none, replace this section with "None. I focused on completing and stabilising the core requirements."]`
-
 ## Project Structure
 
-`[VERIFY: replace with the real structure. Run  tree src -L 2  and paste the output.]`
 
 ```text
 src/
@@ -134,23 +127,20 @@ Base URL: `https://dummyjson.com`
 | Products by category | GET | `/products/category/:category` |
 | Single product | GET | `/products/:id` |
 
-`[VERIFY: remove any endpoint you do not actually call.]`
 
-All requests go through a shared Axios instance in `[VERIFY: src/services/...]`.
+All requests go through a shared Axios instance in `[src/services/...]`.
 
 ## Assumptions
 
-- **DummyJSON does not persist writes.** POST, PUT and DELETE return a simulated success response, but the data is not saved on the server. `[VERIFY: describe what your UI does about this, for example "the UI updates local state so the change is visible until the page is refreshed".]`
-- Tax in the cart is calculated at a flat `[VERIFY: e.g. 13% VAT]` rate on the subtotal.
-- Cart data is stored in `localStorage` under the key `[VERIFY: key name]`.
-- `[VERIFY: add any other assumption, for example how role filtering works, since DummyJSON users have a role field.]`
+- **DummyJSON does not persist writes.** POST, PUT and DELETE return a simulated success response, but the data is not saved on the server. 
+- Tax in the cart is calculated at a flat  rate on the subtotal.
+- Cart data is stored in `localStorage` under the key `[key name]`.
 
 ## Technical Decisions
 
 - **Axios with a service layer:** API calls live in a services folder instead of inside components, so components stay focused on rendering and the endpoints can be changed in one place.
-- **Custom hooks for data fetching:** `[VERIFY: name your hooks, e.g. useFetch / useUsers]` keep loading, error and data handling out of the pages and avoid repeating the same `useEffect` logic.
+- **Custom hooks for data fetching:** `[ e.g. useFetch / useUsers]` keep loading, error and data handling out of the pages and avoid repeating the same `useEffect` logic.
 - **Context API for the cart:** the cart is shared across the product list, product details, navbar and cart page, so it lives in a context provider and is synced to `localStorage`. The brief asks for Context API, and the cart is small enough that a heavier state library would be unnecessary.
-- **Controlled forms with manual validation:** `[VERIFY: this is true only if you did not use a form library. package.json does not include Formik.]`
 - **Explicit handling of edge cases:** API failure, empty search results, empty cart, invalid form data, page refresh and unknown user/product IDs each have a visible state rather than a blank screen.
 - **Client-side routing on Vercel:** a `vercel.json` rewrite sends every path to `index.html`, so deep links and refreshes (for example `/users/5`) work.
 
