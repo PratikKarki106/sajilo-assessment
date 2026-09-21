@@ -1,0 +1,73 @@
+.user-form-page {
+  max-width: 760px;
+}
+
+.user-form-header {
+  margin-bottom: 20px;
+}
+
+.user-form-header h1 {
+  color: #0f172a;
+  font-size: 1.7rem;
+  margin: 4px 0;
+}
+
+.user-form-header p:last-child {
+  color: #64748b;
+}
+
+.user-form {
+  padding: 24px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+}
+
+.user-form-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.user-form-field {
+  display: grid;
+  gap: 6px;
+  color: #475569;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.user-form-field input,
+.user-form-field select {
+  min-height: 42px;
+  width: 100%;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 8px 12px;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+}
+
+.user-form-field input:focus-visible,
+.user-form-field select:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.user-form-field small,
+.user-form-error {
+  color: #b91c1c;
+}
+
+.user-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+@media (min-width: 640px) {
+  .user-form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
