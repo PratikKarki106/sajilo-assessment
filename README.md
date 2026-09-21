@@ -1,16 +1,174 @@
-# React + Vite
+# Sajilo Assessment: User Management Dashboard + E-commerce Product & Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Technical assessment for the **React Developer Intern/Trainee** position at **Sajilo Life Pvt. Ltd.**
 
-Currently, two official plugins are available:
+> **Before you commit this file:** everything marked `[VERIFY]` is something I could not confirm from the code. Check it against your app, fix it, or delete it. Remove this note when done.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo and Repository
 
-## React Compiler
+- **Live app:** https://sajilo-assessment.kpratik.com.np
+- **GitHub:** https://github.com/PratikKarki106/sajilo-assessment
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project Overview
 
-## Expanding the ESLint configuration
+A single React application that contains both assessment projects:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **User Management Dashboard** (`/users`): browse, search, filter, view, add, edit and delete users.
+2. **E-commerce Product & Cart** (`[VERIFY: /products]`): browse products, view details and manage a persistent shopping cart.
+
+Both projects consume the public [DummyJSON](https://dummyjson.com) API.
+
+## Technologies Used
+
+| Area | Tool |
+| --- | --- |
+| UI library | React 19 |
+| Build tool | Vite |
+| Routing | React Router (`react-router-dom` v7) |
+| HTTP client | Axios |
+| Global state | React Context API |
+| Local state and side effects | `useState`, `useEffect`, custom hooks |
+| Persistence | `localStorage` (cart) |
+| Linting | ESLint |
+| Hosting | Vercel |
+
+## Key Features
+
+> Delete any line that is not actually implemented. `[VERIFY]` every item.
+
+### Project 1: User Management Dashboard
+
+- User list with profile image, full name, email, phone and company name
+- Pagination
+- Search
+- Filtering by `[VERIFY: gender / role]`
+- Loading, error and empty-result states
+- Responsive layout
+- Dynamic user details page (`/users/:id`) showing personal info, address, company and bank details, with navigation back to the list
+- Add user form with controlled inputs and validation
+- Edit user form, pre-populated with existing data, with validation
+- Delete user with a confirmation step
+- Submission/loading states and success/error feedback for every write action
+- Friendly "user not found" state for invalid IDs
+
+### Project 2: E-commerce Product & Cart
+
+- Product list with image, title, price, rating and discount percentage
+- Pagination
+- Search
+- Category filtering
+- Sorting: price (low to high), price (high to low), rating
+- Loading, error and empty-result states
+- Dynamic product details page (`/products/:id`) with image gallery, description, brand, stock and reviews
+- Add to cart
+- Cart page: remove items, update quantity, subtotal, calculated tax and total
+- Cart persisted in `localStorage`, so it survives a page refresh
+- Empty cart state
+- Friendly "product not found" state for invalid IDs
+
+## Additional Features Implemented
+
+`[VERIFY: list only what you really built, for example debounced search, toast notifications, skeleton loaders, URL-based filters, dark mode, lazy loading with React.lazy + Suspense, error boundary, protected routes. If none, replace this section with "None. I focused on completing and stabilising the core requirements."]`
+
+## Project Structure
+
+`[VERIFY: replace with the real structure. Run  tree src -L 2  and paste the output.]`
+
+```text
+src/
+  components/   reusable UI components
+  pages/        route-level pages
+  hooks/        custom hooks
+  services/     Axios instance and API calls
+  context/      Context providers (cart, etc.)
+  utils/        helpers
+```
+
+## Getting Started
+
+### Prerequisites
+
+- A recent Node.js LTS release (Vite requires a fairly new Node version, so use the latest LTS if the install fails)
+- npm
+
+### Installation
+
+```bash
+git clone https://github.com/PratikKarki106/sajilo-assessment.git
+cd sajilo-assessment
+npm install
+```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+Then open the URL printed in the terminal (Vite defaults to http://localhost:5173).
+
+### Other scripts
+
+```bash
+npm run build     # production build into dist/
+npm run preview   # serve the production build locally
+npm run lint      # run ESLint
+```
+
+## API Information
+
+Base URL: `https://dummyjson.com`
+
+| Purpose | Method | Endpoint |
+| --- | --- | --- |
+| List users (paginated) | GET | `/users?limit=&skip=` |
+| Search users | GET | `/users/search?q=` |
+| Filter users | GET | `/users/filter?key=&value=` |
+| Single user | GET | `/users/:id` |
+| Add user | POST | `/users/add` |
+| Update user | PUT | `/users/:id` |
+| Delete user | DELETE | `/users/:id` |
+| List products (paginated, sortable) | GET | `/products?limit=&skip=&sortBy=&order=` |
+| Search products | GET | `/products/search?q=` |
+| Product categories | GET | `/products/categories` |
+| Products by category | GET | `/products/category/:category` |
+| Single product | GET | `/products/:id` |
+
+`[VERIFY: remove any endpoint you do not actually call.]`
+
+All requests go through a shared Axios instance in `[VERIFY: src/services/...]`.
+
+## Assumptions
+
+- **DummyJSON does not persist writes.** POST, PUT and DELETE return a simulated success response, but the data is not saved on the server. `[VERIFY: describe what your UI does about this, for example "the UI updates local state so the change is visible until the page is refreshed".]`
+- Tax in the cart is calculated at a flat `[VERIFY: e.g. 13% VAT]` rate on the subtotal.
+- Cart data is stored in `localStorage` under the key `[VERIFY: key name]`.
+- `[VERIFY: add any other assumption, for example how role filtering works, since DummyJSON users have a role field.]`
+
+## Technical Decisions
+
+- **Axios with a service layer:** API calls live in a services folder instead of inside components, so components stay focused on rendering and the endpoints can be changed in one place.
+- **Custom hooks for data fetching:** `[VERIFY: name your hooks, e.g. useFetch / useUsers]` keep loading, error and data handling out of the pages and avoid repeating the same `useEffect` logic.
+- **Context API for the cart:** the cart is shared across the product list, product details, navbar and cart page, so it lives in a context provider and is synced to `localStorage`. The brief asks for Context API, and the cart is small enough that a heavier state library would be unnecessary.
+- **Controlled forms with manual validation:** `[VERIFY: this is true only if you did not use a form library. package.json does not include Formik.]`
+- **Explicit handling of edge cases:** API failure, empty search results, empty cart, invalid form data, page refresh and unknown user/product IDs each have a visible state rather than a blank screen.
+- **Client-side routing on Vercel:** a `vercel.json` rewrite sends every path to `index.html`, so deep links and refreshes (for example `/users/5`) work.
+
+## Screenshots
+
+| Page | Screenshot |
+| --- | --- |
+| User list (desktop) | ![User list](./src/assets/userList.png) |
+| User details | ![User details](./src/assets/userDetails.png) |
+| Add / edit user form | ![User form](./src/assets/userForm.png) |
+| Product list | ![Product list](./src/assets/productList.png) |
+| Product details | ![Product details](./src/assets/productList.png) |
+| Cart | ![Cart](./src/assets/Cart.png) |
+| Loading State | ![Loading](./src/assets/productList.png)|
+| Mobile view | ![Mobile](./src/assets/Mobile.png) |
+
+
+## Author
+
+**Pratik Karki**
+GitHub: [@PratikKarki106](https://github.com/PratikKarki106)
