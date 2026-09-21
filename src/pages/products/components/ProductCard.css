@@ -1,0 +1,11 @@
+.product-card { display: flex; flex-direction: column; overflow: hidden; background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; }
+.product-card-image-link { display: block; background: #f8fafc; }
+.product-card-image { width: 100%; aspect-ratio: 1.2; object-fit: contain; }
+.product-card-content { display: flex; flex: 1; flex-direction: column; gap: 7px; padding: 14px; }
+.product-card-category { color: #64748b; font-size: .72rem; text-transform: capitalize; }
+.product-card-title { min-height: 42px; color: #0f172a; font-weight: 700; text-decoration: none; }
+.product-card-title:hover { color: #2563eb; }
+.product-card-meta { display: flex; justify-content: space-between; color: #0f172a; }
+.product-card-meta span { color: #b45309; font-size: .85rem; }
+.product-card-discount { color: #16a34a; font-size: .8rem; font-weight: 700; }
+.product-card .ui-btn { margin-top: auto; }
