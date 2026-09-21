@@ -155,7 +155,7 @@ All requests go through a shared Axios instance in `[src/services/...]`.
 | Product details | ![Product details](./src/assets/productList.png) |
 | Cart | ![Cart](./src/assets/Cart.png) |
 | Loading State | ![Loading](./src/assets/productList.png)|
-| Mobile view | ![Mobile](./src/assets/Mobile.png) |
+| Mobile view | ![Mobile](./src/assets/Mobile.jpeg) |
 
 
 ## Author
