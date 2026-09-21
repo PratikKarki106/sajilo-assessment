@@ -1,0 +1,33 @@
+.user-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.user-filters-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.user-filters-clear {
+  display: flex;
+  align-items: flex-end;
+}
+
+.user-filters-clear .ui-btn {
+  width: 100%;
+  min-height: 42px;
+}
+
+@media (min-width: 720px) {
+  .user-filters-row {
+    grid-template-columns: 1fr 1fr auto;
+    align-items: end;
+  }
+
+  .user-filters-clear .ui-btn {
+    width: auto;
+  }
+}
