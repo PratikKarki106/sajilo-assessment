@@ -1,0 +1,7 @@
+.products-page { max-width: 1180px; }
+.products-header { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 20px; }
+.product-filters { display: grid; grid-template-columns: minmax(220px, 2fr) repeat(2, minmax(150px, 1fr)) auto; align-items: end; gap: 12px; margin-bottom: 24px; }
+.product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.products-cart-link { display: inline-block; margin-top: 20px; color: #2563eb; font-weight: 700; }
+@media (max-width: 1000px) { .product-grid { grid-template-columns: repeat(3, 1fr); } .product-filters { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .products-header { align-items: start; flex-direction: column; } .product-grid { grid-template-columns: repeat(2, 1fr); } .product-filters { grid-template-columns: 1fr; } }
